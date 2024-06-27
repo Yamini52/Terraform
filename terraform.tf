@@ -2,19 +2,19 @@ terraform{
     required_providers{
         aws={
             source=“hasicorp/aws”
-            version=“>4.26”
+            version=“~>4.16”
         }
     }
     required_providers=“>=1.2.0”
 }
-provider “ aws”{
-    region=“us_east2”
+provider “aws”{
+    region = “us-west-2”
 }
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+resource "aws_instance" "app_server" {
+  ami           = "ami-830c94e3"
+  instance_type = "t2.micro"
 
   tags = {
-    Name = "terraform_demo1"
+    Name = "Terraform_demo"
   }
 }
